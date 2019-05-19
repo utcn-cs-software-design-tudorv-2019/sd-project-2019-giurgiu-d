@@ -39,8 +39,9 @@ public class Episodes {
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
+                 //   CascadeType.PERSIST,
+                  //  CascadeType.MERGE,
+                    CascadeType.ALL
             })
     @JoinTable(name = "Episodes_has_Actors",
             joinColumns = { @JoinColumn(name = "Episodes_idEpisodes") },
@@ -59,6 +60,13 @@ public class Episodes {
         this.episodeReview = episodeReview;
         Season_idSeason = season_idSeason;
         this.actorsEpisodic = actorsEpisodic;
+    }
+    public Episodes(int episodeRating, String episodeName, String episodeDescription, String episodeReview, Season season_idSeason) {
+        this.episodeRating = episodeRating;
+        this.episodeName = episodeName;
+        this.episodeDescription = episodeDescription;
+        this.episodeReview = episodeReview;
+        Season_idSeason = season_idSeason;
     }
 
     public Episodes(int idEpisodes, int episodeRating, String episodeName, String episodeDescription, String episodeReview, Season season_idSeason, Set<Actors> actorsEpisodic) {

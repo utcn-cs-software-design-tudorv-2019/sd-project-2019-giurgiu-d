@@ -63,6 +63,7 @@ ENGINE = InnoDB;*/
         this.movies = movies;
         this.tvShows = tvShows;
     }
+    public User(){}
 
     public User(int password, String userName, Date dateCreation, int userBan, Set<Movies> movies, Set<TvShow> tvShows) {
         this.password = password;

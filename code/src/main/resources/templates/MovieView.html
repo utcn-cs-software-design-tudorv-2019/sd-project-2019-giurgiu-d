@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Movies</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+<table  border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DIRECTOR</th>
+        <th>GENRE</th>
+        <th>RATING</th>
+        <th>CERTIFICATION</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course : ${ MovieList }">
+        <td th:text="${ course.idMovie }">ID</td>
+        <td th:text="${ course.movieName }">name</td>
+        <td th:text="${ course.movieDirector }">director</td>
+        <td th:text="${ course.movieGenre }">genre</td>
+        <td th:text="${ course.movieRating}">rating</td>
+        <td th:text="${ course.movieCertification}">certification</td>
+
+
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -30,10 +30,10 @@ public class Season {
     @OneToMany(mappedBy = "Season_idSeason", cascade = CascadeType.ALL,fetch= FetchType.LAZY)
     private Set<Episodes> episodesList;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
+                    CascadeType.MERGE,
+                    CascadeType.REFRESH
             },
             mappedBy = "seasons")
     private Set<TvShow> TvShow;
@@ -44,6 +44,12 @@ public class Season {
         this.seasonRating = seasonRating;
         this.episodesList = episodesList;
     }
+
+    public Season(String seasonName, int seasonNoEpisode, int seasonRating) {
+        this.seasonName = seasonName;
+        this.seasonNoEpisode = seasonNoEpisode;
+        this.seasonRating = seasonRating;
+        }
     public Season(){}
 
     public Season(String seasonName, int seasonRating) {

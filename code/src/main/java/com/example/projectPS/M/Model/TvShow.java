@@ -43,10 +43,10 @@ public class TvShow {
     private String tvCertification;
 
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
+                    CascadeType.MERGE,
+                    CascadeType.REFRESH
             })
     @JoinTable(name = "TvShow_has_Season",
             joinColumns = { @JoinColumn(name = "TvShow_idTvShow") },
@@ -57,6 +57,7 @@ public class TvShow {
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
+                   // CascadeType.ALL
             },
             mappedBy = "tvShows")
     private Set<User>users;
@@ -66,6 +67,12 @@ public class TvShow {
         this.tvRating = tvRating;
         this.tvName = tvName;
         this.tvGenre = tvGenre;
+    }
+    public TvShow(int tvRating, String tvName, String tvGenre,Set<Season>seasonList) {
+        this.tvRating = tvRating;
+        this.tvName = tvName;
+        this.tvGenre = tvGenre;
+        this.seasons= seasonList;
     }
     public TvShow(){}
 
