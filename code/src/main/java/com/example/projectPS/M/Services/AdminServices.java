@@ -37,6 +37,7 @@ public class AdminServices {
             }
         }
         public Admin findById(int id){return adminRepo.findAdminByIdAdmin(id);}
-
+        public Admin findByAdminName(String name){return adminRepo.findByAdminName(name);}
+        public Admin findByPassword(String name){return adminRepo.findByPassword(name);}
     }
 

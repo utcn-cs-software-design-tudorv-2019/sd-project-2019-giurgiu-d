@@ -25,7 +25,7 @@ ENGINE = InnoDB;*/
     @Column(name = "idUser", nullable = false)
     private int idUser;
     @Column(name = "password", nullable = false)
-    private int password;
+    private String password;
     @Column(name="userName")
     private String userName;
     @Column(name="dateCreation")
@@ -54,7 +54,7 @@ ENGINE = InnoDB;*/
              inverseJoinColumns = { @JoinColumn(name = "TvShow_idTvShow") })
      private Set<TvShow> tvShows;
 
-    public User(int idUser, int password, String userName, Date dateCreation, int userBan, Set<Movies> movies, Set<TvShow> tvShows) {
+    public User(int idUser, String password, String userName, Date dateCreation, int userBan, Set<Movies> movies, Set<TvShow> tvShows) {
         this.idUser = idUser;
         this.password = password;
         this.userName = userName;
@@ -65,7 +65,7 @@ ENGINE = InnoDB;*/
     }
     public User(){}
 
-    public User(int password, String userName, Date dateCreation, int userBan, Set<Movies> movies, Set<TvShow> tvShows) {
+    public User(String password, String userName, Date dateCreation, int userBan, Set<Movies> movies, Set<TvShow> tvShows) {
         this.password = password;
         this.userName = userName;
         this.dateCreation = dateCreation;
@@ -74,7 +74,7 @@ ENGINE = InnoDB;*/
         this.tvShows = tvShows;
     }
 
-    public User(int password, String userName) {
+    public User(String password, String userName) {
         this.password = password;
         this.userName = userName;
     }
@@ -87,11 +87,11 @@ ENGINE = InnoDB;*/
         this.idUser = idUser;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

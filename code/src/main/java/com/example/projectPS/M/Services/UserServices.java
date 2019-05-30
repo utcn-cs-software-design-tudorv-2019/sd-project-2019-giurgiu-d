@@ -15,6 +15,13 @@ public class UserServices {
 
     @Autowired
     UserRepository userRepo;
+    User loggedClient;
+    public void setLoggedClient(User client){
+        loggedClient=client;
+    }
+    public User getLoggedClient() {
+        return loggedClient;
+    }
     public List<User> getAllUser()
     {
         return userRepo.findAll();
@@ -39,5 +46,8 @@ public class UserServices {
             userRepo.save(st);
         }
     }
+    public User findByUserName(String name){return userRepo.findByUserName(name);}
+    public User findByPassword(String name){return userRepo.findByPassword(name);}
+
 
 }

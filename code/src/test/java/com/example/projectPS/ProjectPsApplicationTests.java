@@ -8,7 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import javax.inject.Inject;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
@@ -158,10 +160,10 @@ public class ProjectPsApplicationTests {
 		adminS.delete(adminS.findById(3));
 		adminS.delete(adminS.findById(5));
 	}
-	@Test
+/*	@Test
 	public void testModService()
 	{
-	Moderator mo= new Moderator(1254,"Moderator");
+	//Moderator mo= new Moderator(1254,"Moderator");
 	//modS.create(mo);
 
 	mo.setModeratorName("lalalala");
@@ -173,12 +175,73 @@ public class ProjectPsApplicationTests {
 	@Test
 	public void testUserService()
 	{
-		User us= new User(125,"nume");
+	//	User us= new User(125,"nume");
 		userS.create(us);
 		//User m= us;
 		//m.setPassword(45878);
 		//userS.update(us,m);
 		//userS.delete(us);
 	}
+*/
 
+@Test
+	public void testUserMovieRelationship()
+	{
+	//Movies mov= new Movies("FILM");
+	//movieS.create(mov);
+	Set<Movies>ss= new HashSet<Movies>();
+	//ss.add(mov);
+	Set<TvShow>sses= new HashSet<TvShow>();
+	User usr= new User("Eu", "Eu");
+	userS.create(usr);
+	Set<User> nn= new HashSet<User>();
+	nn.add(usr);
+	//mov.setUsers(nn);
+	System.out.println(usr.getMovies());
+
+	}
+
+	@Test
+	public void testUserRelationship()
+	{
+		Movies mov= new Movies("FILM");
+		movieS.create(mov);
+		Set<Movies>ss= new HashSet<Movies>();
+		ss.add(mov);
+		Set<TvShow>sses= new HashSet<TvShow>();
+		//User usr= new User("Eu", "Eu");
+		User usr= userS.findByUserName("Bianca Ioana");
+		Set<User> nn= new HashSet<User>();
+		nn.add(usr);
+		//mov.setUsers(nn);
+		usr.setMovies(ss);
+		System.out.println(usr.getMovies());
+
+		List<Movies> movieList= movieS.getByUser(usr);
+		ArrayList<String> genres= new ArrayList<String>();/////tinem toate genurile de la filme aici
+		for(Movies cv: movieList)
+		{
+			genres.add(cv.getMovieGenre());
+			System.out.println(cv.getMovieGenre());
+		}
+		genres.toString();
+		ArrayList<ArrayList<Movies>> listaaa = new ArrayList<ArrayList<Movies>>() ;
+		for(String in: genres)
+		{
+			listaaa.add(movieS.findByGenre(in));
+		}
+		ArrayList<Movies>mr=new ArrayList<Movies>();
+		System.out.println("aaaaaaa");
+		for(List<Movies>ssss: listaaa)
+		{
+			for(Movies cc : ssss)
+			{
+				mr.add(cc);///lista simpla pentru afisare
+				System.out.print("1"+cc.toString());
+			}
+		}
+		System.out.println("aaaaaaa");
+		mr.toString();
+
+	}
 }

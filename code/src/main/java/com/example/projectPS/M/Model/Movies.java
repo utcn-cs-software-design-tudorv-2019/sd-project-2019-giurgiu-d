@@ -70,7 +70,20 @@ public class Movies {
             mappedBy = "movies")
     private Set<User>users;
 
+    public Movies(String movieName, String movieDescription, String movieGenre, String movieDirector, String movieCertification, String movieDateCreation, String movieRating) {
+        this.movieName = movieName;
+        this.movieDescription = movieDescription;
+        this.movieGenre = movieGenre;
+        this.movieDirector = movieDirector;
+        this.movieCertification = movieCertification;
+        this.movieDateCreation = java.sql.Date.valueOf(movieDateCreation);
+        this.movieRating = Integer.valueOf(movieRating);
+    }
 
+    public Movies(String name)
+    {
+        this.movieName =name;
+    }
     public Movies(int idMovie, String movieName, String movieDescription, String movieGenre, String movieReviews, String moviePhotos, String movieDirector, String movieCertification, Date movieDateCreation, int movieRating, Set<Actors> actors) {
         this.idMovie = idMovie;
         this.movieName = movieName;

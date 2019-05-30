@@ -20,18 +20,18 @@ ENGINE = InnoDB;
     @Column(name = "idModerator", nullable = false)
     private int idModerator;
     @Column(name = "password", nullable = false)
-    private int password;
+    private String password;
     @Column(name = "moderatorName")
     private String moderatorName;
     @Column(name = "noBan")
     private int noBan=0;
 
-    public Moderator(int password, String moderatorName) {
+    public Moderator(String password, String moderatorName) {
         this.password = password;
         this.moderatorName = moderatorName;
     }
 
-    public Moderator(int password, String moderatorName, int noBan) {
+    public Moderator(String password, String moderatorName, int noBan) {
         this.password = password;
         this.moderatorName = moderatorName;
         this.noBan = noBan;
@@ -45,11 +45,11 @@ ENGINE = InnoDB;
         this.idModerator = idModerator;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

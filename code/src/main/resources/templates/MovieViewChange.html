@@ -2,7 +2,7 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Movies</title>
+    <title>Movies Modify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
@@ -126,83 +126,102 @@ body {
 <body>
 
 <div class="header">
-    <h1>TvShow</h1>
-    <p>The list of shows we have information at the moment</p>
+    <h1>Movies </h1>
+    <p>Modifications available for user, moderator and admin.</p>
 </div>
 
 <div class="navbar">
     <a href="localhost:8012" class="active">Home</a>
-    <a href="movies">Movies</a>
-    <a href="shows">Shows</a>
+
+    <a href="MovieViewChange">Movies</a>
+    <a href="TvShowViewChange">Shows</a>
+    <a href="ActorsViewChange">Actors</a>
+    <a href="AllUserView">Users</a>
+    <a href="moderatorViewChange">Moderators</a>
     <a href="login" class="right">Register</a>
 </div>
-<div class="main">
-    <h2>List of TvShows</h2>
 
+<div class="main">
+    <h2>List of movies</h2>
 
     <table  border="1">
         <thead>
         <tr>
-            <th>ID</th>
             <th>NAME</th>
-            <th>Rating</th>
-            <th>Genre</th>
-            <th><center>Seasons</center></th>
+            <th>DESCRIPTION</th>
+            <th>DIRECTOR</th>
+            <th>GENRE</th>
+            <th>RATING</th>
+            <th>CERTIFICATION</th>
+            <th>AIRED DATE</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="course : ${ ShowList }">
-            <td th:text="${ course.idTvShow}">ID</td>
-            <td th:text="${ course.tvName }">name</td>
-            <td th:text="${ course.tvRating }">rating</td>
-            <td th:text="${ course.tvGenre }">genre</td>
-            <td>
-                <table  border="1">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number of episodes</th>
-                        <th>Rating</th>
-                        <th><center>Episodes</center></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="season : ${ SeasonList }">
-                        <td th:text="${ season.seasonName}">name</td>
-                        <td th:text="${ season.seasonNoEpisode }">noEp</td>
-                        <td th:text="${ season.seasonRating }">rating</td>
-                        <td>
-                            <table  border="1">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Rating</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="episode : ${EpisodeList }">
-                                    <td th:text="${ episode.episodeName}">name</td>
-                                    <td th:text="${ episode.episodeDescription }">noEp</td>
-                                    <td th:text="${ episode.seasonRating }">rating</td>
-                                </tbody>
-                            </table>
-
-
-
-                        </td>
-
-
-                </table>
-
+        <tr th:each="course : ${ MovieList }">
+            <td th:text="${ course.movieName }">name</td>
+            <td th:text="${ course.movieDescription}">description</td>
+            <td th:text="${ course.movieDirector }">director</td>
+            <td th:text="${ course.movieGenre }">genre</td>
+            <td th:text="${ course.movieRating}">rating</td>
+            <td th:text="${ course.movieCertification}">certification</td>
+            <td th:text="${ course.movieDateCreation}">Aired date</td>
         </tr>
         </tbody>
     </table>
+
 </div>
 
+<form   th:object="${newMovie}" method="post">
+    <div class="col-sm-12">
+        <label>Movie name</label>
+        <input placeholder="MovieName" name="movieName"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Description</label>
+        <input placeholder="Description of movie" name="movieDescription"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Genre</label>
+        <input placeholder="Movie genre" name="movieGenre"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Certification</label>
+        <input placeholder="Movie certification" name="movieCertification"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Rating</label>
+        <input placeholder="Movie rating" name="movieRating"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Director</label>
+        <input placeholder="Movie director" name="movieDirector"/>
+    </div>
 
+    <div class="col-sm-12">
+        <label>Date creation</label>
+        <input placeholder="Movie date creation" name="movieDateCreation"/>
+    </div>
+    <button type="submit" class = "btn btn-primary" name = "action" value="ADD">ADD MOVIE</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="UPDATE">EDIT MOVIE</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="DELETE">DELETE MOVIE</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="DELETE">RECOMANDATION MOVIE</button>
+
+</form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

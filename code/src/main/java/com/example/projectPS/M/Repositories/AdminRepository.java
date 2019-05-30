@@ -11,4 +11,6 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
 
     public Admin findAdminByIdAdmin(int id);
     public ArrayList<Admin> findAdminByAdminName(int id);
+    public Admin findByAdminName(String name);
+    public Admin findByPassword(String name);
 }

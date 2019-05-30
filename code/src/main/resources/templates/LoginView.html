@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<form onsubmit="return validateForm()"><font color="black">Username:</font><br>
+    <input id = "inputuser" type="text" name="Username" style="border:1px solid black"  required><br>
+    <font color="black">Password:</font><br>
+    <input id = "inputpass" type="password" name="Password" style="border:1px solid black" required><br>
+
+    <input id = "r1" type="radio" name ="option" value = "admin"><font color="black"> Admin </font><br>
+    <input id = "r2" type="radio" name ="option" value = "client"><font color="black"> Client </font><br>
+    <input id = "r3" type="radio" name ="option" value = "mod"><font color="black"> Moderator </font><br>
+    <input type=button onClick = "validateForm()" value = 'Login '>
+    <input type=button onClick = "validateForm()" value = 'Register '>
+
+</form>
+
+<script>
+            function validateForm() {
+	        document.getElementById("inputuser").style.border = "1px solid black";
+	        document.getElementById("inputpass").style.border = "1px solid black";
+	        var nume,pass,rad1, rad2,rad3, text="";
+	        nume = document.getElementById("inputuser").value;
+	        pass = document.getElementById("inputpass").value;
+	        rad1 = document.getElementById("r1").value;
+	        rad2 = document.getElementById("r2").value;
+	        rad3 = document.getElementById("r3").value;
+	        if (!isNaN(nume)) {
+             text = text + "Username is not valid ! " ;
+	        	alert("Username is not valid ! ");
+	        	document.getElementById("inputnume").style.border = "2px dashed red";
+             } else if(!(nume == "Bianca Ioana" || nume == "Nume User")){
+                text = text + "Username is not valid ! " ;
+                alert("Username is not valid ! ");
+	        	document.getElementById("inputnume").style.border = "2px dashed red";
+	        }
+	        if (!isNaN(pass)) {
+             text = text + "Password is not valid !" ;
+	        	alert("Password is not valid !");
+		        document.getElementById("inputnume").style.border = "2px dashed red";
+            } else if(!(pass == "parola" || pass == "parolaUser" )){
+                text = text + "Password is not valid ! " ;
+                alert("Password is not valid ! ");
+	        	document.getElementById("inputnume").style.border = "2px dashed red";
+	        }
+        	if (text != ""){
+        	    return false;}
+        	else{
+        	if(document.getElementById('r2').checked) {
+                parent.open('http://localhost:8012/AdminView')
+            }else if(document.getElementById('r1').checked) {
+                    parent.open('http://localhost:8012/userView')
+              }
+              else if(document.getElementById('r3').checked) {
+                    parent.open('http://localhost:8012/moderatorView')
+              }
+        	}
+        }
+        </script>
+
+</body>
+</html>

@@ -2,7 +2,9 @@ package com.example.projectPS.C;
 
 import com.example.projectPS.M.Model.Movies;
 import com.example.projectPS.M.Model.TvShow;
+import com.example.projectPS.M.Services.EpisodesServices;
 import com.example.projectPS.M.Services.MoviesServices;
+import com.example.projectPS.M.Services.SeasonServices;
 import com.example.projectPS.M.Services.TvShowServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,10 @@ public class TvShowController {
 
     @Inject
     private TvShowServices movieS;
-
+    @Inject
+    private SeasonServices seasonS;
+    @Inject
+    private EpisodesServices epS;
 
     @RequestMapping(value =  "/shows", method = RequestMethod.GET)
     public ModelAndView getMovies(@RequestParam(name = "", required = false) String firstName)
@@ -30,5 +35,6 @@ public class TvShowController {
 
         return mav;
     }
+
 
 }

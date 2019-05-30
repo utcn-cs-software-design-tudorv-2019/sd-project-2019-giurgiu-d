@@ -2,7 +2,7 @@
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Movies</title>
+    <title>TvShowViweChange</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
@@ -132,14 +132,17 @@ body {
 
 <div class="navbar">
     <a href="localhost:8012" class="active">Home</a>
-    <a href="movies">Movies</a>
-    <a href="shows">Shows</a>
+
+    <a href="MovieViewChange">Movies</a>
+    <a href="TvShowViewChange">Shows</a>
+    <a href="ActorsViewChange">Actors</a>
+    <a href="AllUserView">Users</a>
+    <a href="moderatorViewChange">Moderators</a>
     <a href="login" class="right">Register</a>
 </div>
+
 <div class="main">
     <h2>List of TvShows</h2>
-
-
     <table  border="1">
         <thead>
         <tr>
@@ -203,6 +206,59 @@ body {
 
 </body>
 </html>
+
+
+<form   th:object="${newTvShow}" method="post">
+    <div class="col-sm-12">
+        <label>Name</label>
+        <input placeholder="tv show Name" name="tvName"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Description</label>
+        <input placeholder="Description tv show" name="tvDescription"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Genre</label>
+        <input placeholder="tv show genre" name="tvGenre"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Certification</label>
+        <input placeholder="tv show certification" name="tvCertification"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Rating</label>
+        <input placeholder="tv show rating" name="tvRating"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Director</label>
+        <input placeholder="tv show director" name="tvDirector"/>
+    </div>
+
+    <div class="col-sm-12">
+        <label>Date creation</label>
+        <input placeholder="tv show date creation" name="tvDateCreation"/>
+    </div>
+    <button type="submit" class = "btn btn-primary" name = "action" value="ADD">ADD SHOW</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="UPDATE">EDIT SHOW</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="DELETE">DELETE SHOW</button>
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

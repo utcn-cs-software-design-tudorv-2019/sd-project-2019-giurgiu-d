@@ -126,83 +126,84 @@ body {
 <body>
 
 <div class="header">
-    <h1>TvShow</h1>
-    <p>The list of shows we have information at the moment</p>
+    <h1>Movies</h1>
+    <p>The list of movies we have information at the moment</p>
 </div>
 
 <div class="navbar">
     <a href="localhost:8012" class="active">Home</a>
-    <a href="movies">Movies</a>
-    <a href="shows">Shows</a>
+
+    <a href="MovieViewChange">Movies</a>
+    <a href="TvShowViewChange">Shows</a>
+    <a href="ActorsViewChange">Actors</a>
+    <a href="AllUserView">Users</a>
+    <a href="moderatorViewChange">Moderators</a>
     <a href="login" class="right">Register</a>
 </div>
-<div class="main">
-    <h2>List of TvShows</h2>
 
+<div class="main">
+    <h2>List of movies</h2>
 
     <table  border="1">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>Rating</th>
-            <th>Genre</th>
-            <th><center>Seasons</center></th>
+            <th>USER NAME</th>
+            <th>PASSWORD</th>
+            <th>DATE CREATION</th>
+            <th>BAN</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="course : ${ ShowList }">
-            <td th:text="${ course.idTvShow}">ID</td>
-            <td th:text="${ course.tvName }">name</td>
-            <td th:text="${ course.tvRating }">rating</td>
-            <td th:text="${ course.tvGenre }">genre</td>
-            <td>
-                <table  border="1">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number of episodes</th>
-                        <th>Rating</th>
-                        <th><center>Episodes</center></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="season : ${ SeasonList }">
-                        <td th:text="${ season.seasonName}">name</td>
-                        <td th:text="${ season.seasonNoEpisode }">noEp</td>
-                        <td th:text="${ season.seasonRating }">rating</td>
-                        <td>
-                            <table  border="1">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Rating</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="episode : ${EpisodeList }">
-                                    <td th:text="${ episode.episodeName}">name</td>
-                                    <td th:text="${ episode.episodeDescription }">noEp</td>
-                                    <td th:text="${ episode.seasonRating }">rating</td>
-                                </tbody>
-                            </table>
-
-
-
-                        </td>
-
-
-                </table>
-
-        </tr>
+        <tr th:each="course : ${ UserList }">
+            <td th:text="${ course.userName }">USER NAME</td>
+            <td th:text="${ course.password}">PASSWORD</td>
+            <td th:text="${ course.dateCreation }">DATE CREATION</td>
+            <td th:text="${ course.userBan }">BAN</td>
+         </tr>
         </tbody>
     </table>
 </div>
 
 
+<form   th:object="${newUser}" method="post">
+    <div class="col-sm-12">
+        <label>User name</label>
+        <input placeholder="userName" name="userName"/>
+    </div>
+    <div class="col-sm-12">
+        <label>password</label>
+        <input placeholder="password" name="password"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Date of creation</label>
+        <input placeholder="Actor dateCreation" name="dateCreation"/>
+    </div>
+    <div>
+        <label>Ban</label>
+        <input> placeholder="userBan" name="userBan"/>
+    </div>
+    <button type="submit" class = "btn btn-primary" name = "action" value="ADD">ADD USER</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="UPDATE">EDIT USER</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="DELETE">DELETE USER</button>
+
+</form>
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

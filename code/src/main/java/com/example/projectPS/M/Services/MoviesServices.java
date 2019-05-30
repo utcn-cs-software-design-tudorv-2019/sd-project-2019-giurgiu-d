@@ -3,11 +3,13 @@ package com.example.projectPS.M.Services;
 
 import com.example.projectPS.M.Model.Admin;
 import com.example.projectPS.M.Model.Movies;
+import com.example.projectPS.M.Model.User;
 import com.example.projectPS.M.Repositories.AdminRepository;
 import com.example.projectPS.M.Repositories.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,5 +45,13 @@ public class MoviesServices {
     {
         return moviesRepo.findMoviesByIdMovie(id);
     }
-
+    public Movies findByMovieName(String name)
+    {
+        return moviesRepo.findByMovieName(name);
+    }
+    public ArrayList<Movies> getByUser(User usr)
+    {
+        return moviesRepo.findByUsers(usr);
+    }
+    public ArrayList<Movies>findByGenre(String genre){return moviesRepo.findByMovieGenre(genre);};
 }
